@@ -1,0 +1,12 @@
+mode: set
+github.com/gophercises/gophercise17/crypton/cmd/get.go:13.47,17.17 4 1
+github.com/gophercises/gophercise17/crypton/cmd/get.go:22.3,22.46 1 1
+github.com/gophercises/gophercise17/crypton/cmd/get.go:17.17,21.4 2 1
+github.com/gophercises/gophercise17/crypton/cmd/get.go:26.13,28.2 1 1
+github.com/gophercises/gophercise17/crypton/cmd/rootcmd.go:14.13,16.2 1 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:15.47,20.31 4 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:24.3,25.17 2 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:30.3,30.44 1 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:20.31,23.4 2 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:25.17,29.4 2 1
+github.com/gophercises/gophercise17/crypton/cmd/set.go:34.13,36.2 1 1
