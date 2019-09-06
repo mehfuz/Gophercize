@@ -1,6 +1,7 @@
 package main
 
 import (
+	"runtime/debug"
 	"testing"
 	"time"
 
@@ -36,11 +37,11 @@ func CheckLinks(endpoint fn, method string, url string, query string, expectedSt
 }
 
 func TestHandleDebug(t *testing.T) {
-	query := "?path=C:/Users/gs-1706/go/src/github.com/gophercises/gophercise15/main.go"
+	query := "?path=/home/mehfuz/go/src/github.com/Gophercize-master/gophercise15/main.go"
 	responsestirng := CheckLinks(HandleDebug, "GET", "/debug", query, 200)
 	//fmt.Println(responsestirng)
 	// Check the response body is what we expect.
-	b, err := ioutil.ReadFile("C:/Users/gs-1706/go/src/github.com/gophercises/gophercise15/main.go")
+	b, err := ioutil.ReadFile("/home/mehfuz/go/src/github.com/Gophercize-master/gophercise15/main.go")
 	if err != nil {
 		t.Error("Reading expected file error.")
 	}
@@ -95,12 +96,17 @@ func TestNegativeLex(test *testing.T) {
 	lexStringFunc = func(options *chroma.TokeniseOptions, text string) (chroma.Iterator, error) {
 		return nil, errors.New("mocked Lexer")
 	}
-	_ = CheckLinks(HandleDebug, "GET", "/debug", "?path=C:/Users/gs-1706/go/src/github.com/gophercises/gophercise15/main.go", 500)
+	_ = CheckLinks(HandleDebug, "GET", "/debug", "?path=/home/mehfuz/go/src/github.com/Gophercize-master/gophercise15/main.go", 500)
 }
 
-func TestErrparseLines(test *testing.T) {
-	_ = parseLines("\tc:/go/src/runtime/debug/stack.go:qq\n\tc:/go/src/runtime/debug/stack.go:cd")
+func TestCreateLinks(t *testing.T) {
+	stack := debug.Stack()
+	link := parseLines(string(stack))
+	if link == "" {
+		t.Error("Expected link got", link)
+	}
 }
+
 func TestMainFunc(test *testing.T) {
 	go main()
 	time.Sleep(1 * time.Second)

@@ -93,9 +93,7 @@ func parseLines(response string) string {
 		tline := ""
 		for ind, ch := range line {
 			if ch == ':' {
-				if ind == 2 {
-					continue
-				}
+
 				tline = line[1:ind]
 				break
 			}
@@ -103,7 +101,7 @@ func parseLines(response string) string {
 		var strbuilder strings.Builder
 		//add line number as parameter to the url
 		for i := len(tline) + 2; i < len(line); i++ {
-			if line[i] < '0' && line[i] > '9' {
+			if line[i] < '0' || line[i] > '9' {
 				break
 			}
 			strbuilder.WriteByte(line[i])
