@@ -18,6 +18,7 @@ import (
 
 type fn func(resp http.ResponseWriter, rq *http.Request)
 
+//Test Function 
 func CheckLinks(endpoint fn, method string, url string, query string, expectedStatus int) string {
 	req, err := http.NewRequest(method, url+query, nil)
 	if err != nil {
